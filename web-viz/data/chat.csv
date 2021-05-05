@@ -1,0 +1,13 @@
+index,message,cumulative_sentiment,individual_sentiment
+1,hello,1,1
+2,impoki,1,0
+3,what it do,1,0
+4,pogchamp,3,2
+5,pokiHype this is so poggers!,6,3
+6,not poggers i hate this,3,-3
+7,hello,4,1
+8,impoki,4,0
+9,what it do,4,0
+10,pogchamp,6,2
+11,pokiHype this is so poggers!,9,3
+12,not poggers i hate this,6,-3

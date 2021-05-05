@@ -1,0 +1,54 @@
+#d3graphic {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
+#sections {
+    /* position: relative; */
+    grid-column: 1 / 2;
+    width: 25vw;
+    margin-top: 35vh;
+    z-index: 90;
+    margin-left: 25vw;
+    }
+    
+    .step {
+    margin-bottom: 20px;
+    }
+
+   /* #starting-step {
+     margin-top: 0l
+   } */
+    
+    #sticky-container {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 60px;
+      z-index: 0;
+      height: 70vh;
+      width: 35vw;
+      margin-right: 25vw;
+      grid-column: 2 / 3;
+      background-color: bisque;
+    }
+
+    #chat-messages {
+      background-color: rgb(130, 140, 197);
+      position: absolute;
+      height: 75%;
+      width: 35vw;
+    }
+
+    #chat-viz {
+      background-color: rgb(167, 173, 211);
+      position: absolute;
+      height: 15vh;
+      width: 35vw;
+      bottom: 0;
+      
+    }
+
+    #extra-space {
+        height: 6000px;
+      }
+      
