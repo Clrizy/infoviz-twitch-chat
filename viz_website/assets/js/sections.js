@@ -1,9 +1,10 @@
 let chat_dataset;
 let textYscale;
+let sentimentRect1, sentimentRect2, sentimentText1, sentimentText2;
 
 
 
-d3.csv('https://gist.githubusercontent.com/gaoag/215cad92f80f14479ba3662dfe8773d2/raw/5150039d6fdbe50eef405dc2e7215cea9be37876/chattext.csv').then(data => {
+d3.csv('https://gist.githubusercontent.com/gaoag/215cad92f80f14479ba3662dfe8773d2/raw/742aeb7c4ca5164007a268a6525edbbcb56ed93b/chattext.csv').then(data => {
     chat_dataset = data
     console.log(chat_dataset)
     createScales()
@@ -52,31 +53,50 @@ function drawInitial() {
         });
 
     let vis_svg = d3.select("#chat-viz").append('svg').attr('width', '100%').attr('height', '100%')
-    let explainer = vis_svg.append('text').attr('fill', 'black').attr('x', 10).attr('y', 23).attr('font-size', 20)
-    .attr('class', 'big_text').text('Overall sentiment so far:')
+    
     // // Create bar graph elements that show: what?
+    
+    let barArray = [0, 0, 0]
+    let totalWidth = $('#chat-viz').width();
+    let percentageRects = vis_svg.selectAll('rect').data(barArray).enter()
+                .append('rect')
+                .attr('class', 'percentage_rects')
+                .attr('height', 30)
+                .attr('width', totalWidth / 3 - 1)
+                .attr('y', 30)
+                .attr('x', function(d, i) {
+                    return totalWidth/3 * i + 1 * i;
+                }).attr('fill', function(d, i) {
+                    if (barArray[0] == 0 && barArray[1] == 0 && barArray[2] == 0) {
+                        console.log('did this')
+                        return 'lightgrey';
+                    } else {
+                        let colors = ['steelblue','lightgrey', 'maroon'];
+                        
+                        return colors[i]
+                    }
+                })
 
-    var bar = vis_svg.append("rect")
-    .attr('y', 40).attr('height', 20).attr('width', 40).attr('fill', 'black')
+    let percentages = vis_svg.selectAll('text').data(barArray).enter()
+                .append('text')
+                .attr('class', 'percentage_text')
+                .attr('font-size', 15)
+                .attr('y', 30 + 20)
+                .attr('x', 0)
+                .attr('fill', 'white')
 
-    
-	
-    // perc_so_far = 0;
-    // bar.append("text")
-    //     .attr("x", function(d) {
-    //         var prev_perc = perc_so_far;
-    //         var this_perc = 100*(d/d.index);
-    //         perc_so_far = perc_so_far + this_perc;
-    //         console.log("perc_so_far:" + perc_so_far + "; this_perc:" + this_perc + "; prev_perc:" + prev_perc + ";");
-    //         return prev_perc + "%";
-    //     })
-    //     //.attr("y", 11)
-    //     .attr("dy", "1.35em")
-    //     .text(function(d) { return d; });
-    
-    
-    
-    // }
+    let explainer = vis_svg.append('text').attr('fill', 'black').attr('x', 0).attr('y', 23).attr('font-size', 15)
+    .attr('class', 'big_text').text('Proportion of positive, neutral, negative messages')
+
+    let explainer2 = vis_svg.append('text').attr('fill', 'black').attr('x', 0).attr('y', 85).attr('font-size', 15)
+    .attr('class', 'big_text').text('Overall sentiment so far')
+
+    // now append some extra rectangles for the overall sentiment
+    sentimentRect1 = vis_svg.append('rect').attr('class', 'sentiment_rects').attr('height', 30).attr('y', 90).attr('fill', 'steelblue')
+    sentimentRect2 = vis_svg.append('rect').attr('class', 'sentiment_rects').attr('height', 30).attr('y', 90).attr('fill', 'maroon')
+    sentimentText1 = vis_svg.append('text').attr('text', 'sentiment_text').attr('font-size', 15).attr('y', 90 + 18).attr('fill', 'white')
+    sentimentText2 = vis_svg.append('text').attr('text', 'sentiment_text').attr('font-size', 15).attr('y', 90 + 18).attr('fill', 'white')
+
 }
 
 function drawfunction(index){
@@ -115,6 +135,71 @@ function drawfunction(index){
             return (i - index)*24 + $('#chat-messages').height() - 20
         });
 
+    // model: we initialize with a full grey rect crew, based on the barArray.
+    // then, we modify the barArray and rebind the data. it should auto-modify the initial stuff defined above without need to redo your "attrs". 
+    
+    if (index > 0) {
+        let avgSent = chat_dataset[index-1].cumulative_sentiment / index
+        let totalWidth = $('#chat-viz').width();
+        let vis_svg = d3.select("#chat-viz").select('svg')
+        let barArray = [0, 0, 0]
+        let xPoses = [0, 0, 0]
+        
+        for (let j = 0; j <= index; j++) {
+            let sent = chat_dataset[j].individual_sentiment
+            let barArrayIndex = (sent > 0) ? 0 : ((sent < 0) ? 2 : 1)
+            barArray[barArrayIndex] += 1
+        }
+    
+        barArray = barArray.map(function(elem) {return elem/(index+1)})
+        
+        for (let i = 0; i < 3; i++) {
+            let totalWidthSoFar = 0;
+            for (let j = 0; j < i; j++) {
+                totalWidthSoFar += totalWidth*barArray[j]
+            }
+            xPoses[i] = totalWidthSoFar + 1*i
+        }
+        
+        console.log(xPoses, barArray);
+        vis_svg.selectAll('.percentage_rects')
+            .attr('width', function(d, i) {
+                let rectWidth = totalWidth*barArray[i] - 1
+                return rectWidth > 0 ? rectWidth : 0;
+            }).attr('x', function(d, i) {
+                return xPoses[i];
+            }).attr('fill', function(d, i) {
+                if (barArray[0] == 0 && barArray[1] == 0 && barArray[2] == 0) {
+                    console.log('did this')
+                    return 'lightgrey';
+                } else {
+                    let colors = ['steelblue','lightgrey', 'maroon'];
+                    
+                    return colors[i]
+                }
+            })
+
+
+        vis_svg.selectAll(".percentage_text")
+            .attr('fill', 'white')
+            .attr('y', 30+20)
+            .attr('x', function(d, i) {return xPoses[i]})
+            .text(function(d, i) {return (barArray[i]*100).toFixed(1) + "%"})
+
+        
+        let posSent = chat_dataset[index].total_pos_sentiment;
+        let negSent = chat_dataset[index].cumulative_sentiment - posSent;
+        let rect1Width = totalWidth * (posSent / (posSent - negSent)) - 1;
+        let rect2Width = totalWidth - rect1Width - 1;
+        sentimentRect1.attr('width', rect1Width).attr('x', 0)
+        sentimentRect2.attr('width', rect2Width).attr('x', rect1Width + 1);
+        sentimentText1.attr('x', 2).text("+" + posSent)
+        sentimentText2.attr('x', rect1Width + 2).text(negSent)
+
+    }
+    
+
+    // then, we update some text abt the avg sentiment. 
     
 }
 
