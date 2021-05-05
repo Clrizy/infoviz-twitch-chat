@@ -52,26 +52,15 @@ function drawInitial() {
         });
 
     let vis_svg = d3.select("#chat-viz").append('svg').attr('width', '100%').attr('height', '100%')
-    let explainer = vis_svg.append('text').attr('fill', 'black').attr('x', 10).attr('y', 10).attr('font-size': 20)
+    let explainer = vis_svg.append('text').attr('fill', 'black').attr('x', 10).attr('y', 23).attr('font-size', 20)
     .attr('class', 'big_text').text('Overall sentiment so far:')
     // // Create bar graph elements that show: what?
 
-    // var bar = svg.selectAll("g")
-	// .data(data)
-	// .enter().append("g");
+    var bar = vis_svg.append("rect")
+    .attr('y', 40).attr('height', 20).attr('width', 40).attr('fill', 'black')
 
-    // bar.append("rect")
-	// .attr("width", function(d) { return ((d/d.index)*100) + "%"; } )
-	// .attr("x", function(d) {
-	// 	var prev_perc = perc_so_far;
-	// 	var this_perc = 100*(d/d.index);
-	// 	perc_so_far = perc_so_far + this_perc;
-	// 	console.log("perc_so_far:" + perc_so_far + "; this_perc:" + this_perc + "; prev_perc:" + prev_perc + ";");
-	// 	return prev_perc + "%";
-	// })
-	// .attr("height", 20)
-	// .attr("fill",  function(d) { return d.individual_sentiment == 0 ? 'gray' : (d.individual_sentiment > 0 ? 'steelblue' : 'maroon') });
-
+    
+	
     // perc_so_far = 0;
     // bar.append("text")
     //     .attr("x", function(d) {
@@ -117,11 +106,7 @@ function drawfunction(index){
 
     svg.selectAll('.score_text')
         .attr('fill', function(d, i) {
-            if (i === index) {
-                return (d.individual_sentiment == 0) ? "darkgrey" : (d.individual_sentiment > 0 ? "green" : "red")
-            } else {
-                return 'black';
-            }
+            return (d.individual_sentiment == 0) ? "darkgrey" : (d.individual_sentiment > 0 ? "green" : "red")
         })
         .attr('opacity', function(d, i) {
             return (i == index) ? 1.0 : ((i < index) && (i > (index - 15)) ? 1 - (index-i)*0.066 : 0)
@@ -129,9 +114,6 @@ function drawfunction(index){
         .attr('y', function(d, i) {
             return (i - index)*24 + $('#chat-messages').height() - 20
         });
-
-    
-    svg.select('.big_text').attr('fill', 'black').attr('x', 10).attr('y', '100%').attr('opacity', 1.0).text('Overall sentiment so far:')
 
     
 }
