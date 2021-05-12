@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
+    <title>Twitch Chat Visualization</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset=”utf-8″>
@@ -111,7 +111,7 @@ https://templatemo.com/tm-561-purple-buzz
     <!-- End Inspiration -->
 
     <!-- Start Method -->
-    
+
 
     <!-- Start Chat Analyzing Viz-->
     <!-- Start Individual Viz -->
@@ -131,12 +131,12 @@ https://templatemo.com/tm-561-purple-buzz
                 <div class="row">
                     <div class="col-md-8 m-auto text-left justify-content-center">
                         <p class="text-muted light-300">
-                            We sample some chats from a 2-hour long stream from Twitch user "Pokimane", presented below. Scroll through to start seeing the messages and how we process them. 
+                            We sample some chats from a 2-hour long stream from Twitch user "Pokimane", presented below. Scroll through to start seeing the messages and how we process them.
                             Don't scroll too fast, and <b>try not to use the scroll wheel</b> on a mouse! (scroll wheels can jump very far down the page at once and miss some of the annotations in between).
                         </p>
                     </div>
                 </div><!-- End Qute -->
-                
+
             </div>
             <div class="d3graphiccontainer">
                 <div id='d3graphic'>
@@ -156,11 +156,11 @@ https://templatemo.com/tm-561-purple-buzz
                         <section class="step">.</section>
                         <section class="step">.</section>
                         <section class="step">Common emotes on twitch such as PepeLaugh, LUL, KEKW, etc. are used to denote laughter - but laughter
-                            can be sarcastic and mocking or genuine and positive. One weakness of sentiment analysis is that without further context, some messages cannot be clearly classified as 
+                            can be sarcastic and mocking or genuine and positive. One weakness of sentiment analysis is that without further context, some messages cannot be clearly classified as
                             positive or negative. We err on the side of neutrality for this analysis.
                         </section>
                         <section class="step">.</section>
-                        <section class="step">This is an example of a message that is interpreted as extremely positive. Though we have cut it off for the sake of brevity, it's the same message 
+                        <section class="step">This is an example of a message that is interpreted as extremely positive. Though we have cut it off for the sake of brevity, it's the same message
                             spammed dozens of times. Such "spam" is common on Twitch, both positive and negative.  </section>
                         <section class="step">.</section>
                         <section class="step">.</section>
@@ -169,10 +169,10 @@ https://templatemo.com/tm-561-purple-buzz
                         <section class="step">.</section>
                         <section class="step">.</section>
                         <section class="step">.</section>
-                        <section class="step">Bullying is quite common Twitch; there will inevitably be people who enter streams just to say mean things to the streamer (who is often reading 
+                        <section class="step">Bullying is quite common Twitch; there will inevitably be people who enter streams just to say mean things to the streamer (who is often reading
                             these messages as they play). The sentiment analysis tool attempts to find such insults, which it knows to mark as negative.
                         </section>
-                        <section class="step">Another instance of "positive" spam. Here, they are using the pokiWK emote, meant to represent a WK ("white knight") cheering her on, as well as the 
+                        <section class="step">Another instance of "positive" spam. Here, they are using the pokiWK emote, meant to represent a WK ("white knight") cheering her on, as well as the
                             slang term "hyperclap". We have manually compiled a list of positive emotes and slang for our sentiment analyzer to use.
                         </section>
                         <section class="step">.</section>
@@ -196,7 +196,7 @@ https://templatemo.com/tm-561-purple-buzz
                         </section>
                         <section class="step">.</section>
                         <section class="step">.</section>
-                        <section class="step">This message casts a negative light on the chat, calling them "low elo", which is slang for unskilled. Such self deprecation and insults are common 
+                        <section class="step">This message casts a negative light on the chat, calling them "low elo", which is slang for unskilled. Such self deprecation and insults are common
                             in his chat.
                         </section>
                         <section class="step">.</section>
@@ -217,7 +217,7 @@ https://templatemo.com/tm-561-purple-buzz
                         <section class="step">.</section>
                         <section class="step">.</section>
                         <section class="step">.</section>
-                        <section class="step">Many such messages have no real words, but instead use slang and serve as pure reaction. "Monka" typically refers to a series of emotes 
+                        <section class="step">Many such messages have no real words, but instead use slang and serve as pure reaction. "Monka" typically refers to a series of emotes
                             that look like this, and are used to connote sadness or fear.
                         </section>
                         <section class="step">.</section>
@@ -235,8 +235,8 @@ https://templatemo.com/tm-561-purple-buzz
                         <section class="step">.</section>
                         <section class="step">More negative spam... </section>
                         <section class="step">.</section>
-                        <section class="step">Good question, anonymous user. The answer is: you don't! (and yes, this is a real chat log from Tyler1's stream; it seems like even viewers are bewildered sometimes). 
-                            <br><br><br><br>As you could see from the past two chat logs, people generally don't interact or respond to each other on Twitch chats. Each chat message individually seems random and chaotic; 
+                        <section class="step">Good question, anonymous user. The answer is: you don't! (and yes, this is a real chat log from Tyler1's stream; it seems like even viewers are bewildered sometimes).
+                            <br><br><br><br>As you could see from the past two chat logs, people generally don't interact or respond to each other on Twitch chats. Each chat message individually seems random and chaotic;
                             in aggregate, however, we can get a sense for the overall culture and attitude of each streamer's community.
                              </section>
 
@@ -248,7 +248,7 @@ https://templatemo.com/tm-561-purple-buzz
                         <div id='chat-viz'>
                         </div>
                     </div>
-                    
+
                     <div id="extra-space">
                     </div>
                 </div>
@@ -305,8 +305,8 @@ https://templatemo.com/tm-561-purple-buzz
             <div class="row justify-content-center my-0">
                 <div class="filter-btns shadow-md rounded-pill text-center col-auto">
                     <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".business" href="#">Pokimane</a>
-                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".marketing" href="#">tyler1</a>
-                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic" href="#">doublelift</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".marketing" href="#">loltyler1</a>
+                    <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic" href="#">HealthyGamer_GG</a>
                 </div>
             </div>
         </div>
@@ -315,7 +315,7 @@ https://templatemo.com/tm-561-purple-buzz
 
     <section class="container py-0">
         <div class="row d-flex align-items-center pb-5">
-            <div class="col-lg-2 offset-lg-3 col-md-8 offset-md-2">
+            <div class="col-lg-2 offset-lg-3 col-md-6 offset-md-2">
                 <img class="rounded float-right" src="./assets/img/tyler1.jpg" width = 200>
             </div>
 
@@ -324,16 +324,16 @@ https://templatemo.com/tm-561-purple-buzz
                 <!-- Start Profile -->
                     <div class="row p-2">
 
-                        <div class="pricing-list-body offset-lg-4 col-md-6 align-items-center pl-3 pt-2">
+                        <div class="pricing-list-body offset-lg-2 col-md-8 align-items-center pl-3 pt-2">
                             <ul class="list-unstyled text-left light-300">
                                 <li class="h5 semi-bold-600 mb-2 mt-3">Streamer</li>
-                                <li>tyler1</li>
-                                <li class="h5 semi-bold-600 mb-2 mt-3">Category</li>
+                                <a rel="nofollow" href="https://www.twitch.tv/loltyler1" target="_parent">loltyler1</a>
+                                <li class="h5 semi-bold-600 mb-2 mt-3">Primary Category</li>
                                 <li>League of Legends</li>
                                 <li class="h5 semi-bold-600 mb-2 mt-3">Log Date</li>
-                                <li>April 27, 2021</li>
-                                <a rel="nofollow" href="https://www.twitch.tv/videos/992521114" target="_parent">Link to stream</a>
-                                <li class="h5 semi-bold-600 mb-2 mt-3">Theme</li>
+                                <li>May 6th, 2021</li>
+                                <a rel="nofollow" href="https://www.twitch.tv/videos/1013510383" target="_parent">Link to stream</a>
+                                <li class="h5 semi-bold-600 mb-2 mt-3">Theme in Abstract</li>
                                 <li>nice weather League play</li>
                             </ul>
                         </div>
@@ -354,8 +354,8 @@ https://templatemo.com/tm-561-purple-buzz
 
     <section class="container py-0">
         <div class="row d-flex align-items-center pb-5">
-            <div class="col-lg-2 offset-lg-3 col-md-8 offset-md-2">
-                <img class="rounded float-right" src="./assets/img/doublelift.jpg" width = 200>
+            <div class="col-lg-2 offset-lg-3 col-md-6 offset-md-2">
+                <img class="rounded float-right" src="./assets/img/drk.jpg" width = 200>
             </div>
 
             <div class="col-lg-4">
@@ -363,17 +363,17 @@ https://templatemo.com/tm-561-purple-buzz
                 <!-- Start Profile -->
                     <div class="row p-2">
 
-                        <div class="pricing-list-body offset-lg-4 col-md-6 align-items-center pl-3 pt-2">
+                        <div class="pricing-list-body offset-lg-2 col-md-8 align-items-center pl-3 pt-2">
                             <ul class="list-unstyled text-left light-300">
                                 <li class="h5 semi-bold-600 mb-2 mt-3">Streamer</li>
-                                <li>doublelift</li>
-                                <li class="h5 semi-bold-600 mb-2 mt-3">Category</li>
-                                <li>League of Legends</li>
+                                <a rel="nofollow" href="https://www.twitch.tv/healthygamer_gg" target="_parent">HealthyGamer_GG</a>
+                                <li class="h5 semi-bold-600 mb-2 mt-3">Primary Category</li>
+                                <li>Just Chatting</li>
                                 <li class="h5 semi-bold-600 mb-2 mt-3">Log Date</li>
-                                <li>May 1, 2021</li>
-                                <a rel="nofollow" href="https://www.twitch.tv/videos/992521114" target="_parent">Link to stream</a>
-                                <li class="h5 semi-bold-600 mb-2 mt-3">Theme</li>
-                                <li>chilling League play</li>
+                                <li>May 3rd, 2021</li>
+                                <a rel="nofollow" href="https://www.twitch.tv/videos/1009779786" target="_parent">Link to stream</a>
+                                <li class="h5 semi-bold-600 mb-2 mt-3">Theme in Abstract</li>
+                                <li>Talking with Bjergsen</li>
                             </ul>
                         </div>
                     </div>
@@ -393,7 +393,7 @@ https://templatemo.com/tm-561-purple-buzz
 
     <section class="container py-0">
         <div class="row d-flex align-items-center pb-5">
-            <div class="col-lg-2 offset-lg-3 col-md-8 offset-md-2">
+            <div class="col-lg-2 offset-lg-3 col-md-6 offset-md-2">
                 <img class="rounded float-right" src="./assets/img/pokimane.jpg" width = 200>
             </div>
 
@@ -402,16 +402,16 @@ https://templatemo.com/tm-561-purple-buzz
                 <!-- Start Profile -->
                     <div class="row p-2">
 
-                        <div class="pricing-list-body offset-lg-4 col-md-6 align-items-center pl-3 pt-2">
+                        <div class="pricing-list-body offset-lg-2 col-md-8 align-items-center pl-3 pt-2">
                             <ul class="list-unstyled text-left light-300">
                                 <li class="h5 semi-bold-600 mb-2 mt-3">Streamer</li>
-                                <li>Pokimane</li>
-                                <li class="h5 semi-bold-600 mb-2 mt-3">Category</li>
+                                <a rel="nofollow" href="https://www.twitch.tv/pokimane" target="_parent">Pokimane</a>
+                                <li class="h5 semi-bold-600 mb-2 mt-3">Primary Category</li>
                                 <li>Variety</li>
                                 <li class="h5 semi-bold-600 mb-2 mt-3">Log Date</li>
-                                <li>April 18, 2021</li>
+                                <li>April 18th, 2021</li>
                                 <a rel="nofollow" href="https://www.twitch.tv/videos/992521114" target="_parent">Link to stream</a>
-                                <li class="h5 semi-bold-600 mb-2 mt-3">Theme</li>
+                                <li class="h5 semi-bold-600 mb-2 mt-3">Theme in Abstract</li>
                                 <li>OfflineTV Valorant Tournament</li>
                             </ul>
                         </div>
@@ -421,7 +421,7 @@ https://templatemo.com/tm-561-purple-buzz
 
                 <div class="feature-work container my-4"></div>
                 <body>
-                  <iframe width="1335px" height="894px" src="https://public.tableau.com/views/twitch_16199950231110/Poki?:showVizHome=no&:embed=true"></iframe>
+                  <iframe class="pricing-list-body offset-lg-2 col-md-10 align-items-center pl-3 pt-2" width="1335px" height="894px" src="https://public.tableau.com/views/twitch_16199950231110/Poki?:showVizHome=no&:embed=true"></iframe>
                 </body>
 
             </div>
