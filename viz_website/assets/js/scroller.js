@@ -73,7 +73,7 @@
    function position() {
     // let containerStart = document.getElementById('sections').offset().top
     // console.log(document.getElementById('empty-top-section').height)
-    let pos = window.pageYOffset - containerStart + 200;
+    let pos = window.pageYOffset - containerStart + 100;
     let sectionIndex = d3.bisect(sectionPositions, pos);
     sectionIndex = Math.min(sections.size()-1, sectionIndex);
     // console.log(window.pageYOffset, pos, window.innerHeight, containerStart)

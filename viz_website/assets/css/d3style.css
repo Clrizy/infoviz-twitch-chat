@@ -13,17 +13,22 @@
     }
     
     .step {
-    margin-bottom: 20px;
+    margin-bottom: 180px;
+    margin-right: 40px;
     }
 
    /* #starting-step {
      margin-top: 0l
    } */
+
+   #transition-step {
+     margin-bottom: 500px;
+   }
     
     #sticky-container {
       position: -webkit-sticky;
       position: sticky;
-      top: 60px;
+      top: 20px;
       z-index: 0;
       height: 70vh;
       width: 35vw;
@@ -36,7 +41,8 @@
       /* background-color: rgb(130, 140, 197); */
       position: absolute;
       height: 75%;
-      width: 35vw;
+      width: 100vw;
+      
     }
 
     #chat-viz {
@@ -49,6 +55,6 @@
     }
 
     #extra-space {
-        height: 6000px;
+        height: 1250px;
       }
       
