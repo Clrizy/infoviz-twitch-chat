@@ -6,7 +6,7 @@ let svg;
 let vis_svg;
 
 
-d3.csv('https://gist.githubusercontent.com/gaoag/21f3b913ecb477e643182a52161b5311/raw/ba54518930c4e7003ac02662d017f31ca2e3feb6/pokichattext.csv').then(data => {
+d3.csv('https://gist.githubusercontent.com/gaoag/21f3b913ecb477e643182a52161b5311/raw/ddf16d0ae32d0decf8a0818b36c62ca68466fe47/pokichattext.csv').then(data => {
     chat_dataset = data
     curr_dataset = "poki"
     console.log(chat_dataset)
@@ -22,7 +22,7 @@ function changeDataset() {
             setTimeout(drawInitial(), 100)
         })
     } else {
-        d3.csv('https://gist.githubusercontent.com/gaoag/21f3b913ecb477e643182a52161b5311/raw/ba54518930c4e7003ac02662d017f31ca2e3feb6/pokichattext.csv').then(data => {
+        d3.csv('https://gist.githubusercontent.com/gaoag/21f3b913ecb477e643182a52161b5311/raw/ddf16d0ae32d0decf8a0818b36c62ca68466fe47/pokichattext.csv').then(data => {
             chat_dataset = data
             curr_dataset = "poki"
             setTimeout(drawInitial(), 100)
@@ -272,7 +272,7 @@ scroll.on('active', function(index){
             console.log(d)
             return 1
         } else {
-            return 0
+            return 0.15
         }
     
     });
