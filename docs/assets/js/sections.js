@@ -101,9 +101,9 @@ function drawInitial() {
                 }).attr('fill', function(d, i) {
                     if (barArray[0] == 0 && barArray[1] == 0 && barArray[2] == 0) {
                         console.log('did this')
-                        return 'lightgrey';
+                        return 'darkgrey';
                     } else {
-                        let colors = ['steelblue','lightgrey', 'maroon'];
+                        let colors = ['steelblue','darkgrey', 'maroon'];
                         
                         return colors[i]
                     }
@@ -131,7 +131,136 @@ function drawInitial() {
 
 }
 
-function drawfunction(index){
+function drawSpecial() {
+
+    reset()
+    // t1 is 10.8% ,43.2%, and 45.9% | 2.24 -8.73
+    // poki is 26.7%, 53.3%, 20.0% | 5.06 -2.07
+    svg = d3.select("#chat-messages")
+                    .append('svg').attr('width', '100%').attr('height', '100%')
+
+    let totalWidth = $('#chat-viz').width();
+
+    let colors = ['steelblue', 'darkgrey', 'maroon']
+    let t1nums = [10.8, 43.2, 45.9]
+    let t1sents = [2.24, 8.73]
+    let pokinums = [26.7, 53.3, 20.0]
+    let pokisents = [5.06, 2.07]
+
+    let t1numrects = svg.selectAll('.t1numrect').data(t1nums).enter().append('rect')
+                .attr('height', 30)
+                .attr('width', function(d, i) {
+                    return totalWidth * t1nums[i]/100 - 1;
+                })
+                .attr('y', 100 + 30)
+                .attr('x', function(d, i) {
+                    prevWidths = 0
+                    for (let j=0; j < i; j++) {
+                        prevWidths += totalWidth * t1nums[j]/100
+                    }
+                    return 35 + prevWidths + i;
+                }).attr('fill', function(d, i) {
+                    return colors[i]
+                })
+    svg.append('text').attr('fill', 'white').attr('y', 100 + 15 + 30).attr('font-size', 15).attr('x', 35).text('10.8%')
+    svg.append('text').attr('fill', 'white').attr('y', 100 + 15 + 30).attr('font-size', 15).attr('x', 35 + totalWidth*(0.108) + 1).text('43.2%')
+    svg.append('text').attr('fill', 'white').attr('y', 100 + 15 + 30).attr('font-size', 15).attr('x', 35 + totalWidth*(0.108 + 0.432) + 2).text('45.9%')
+    svg.append("svg:image").attr('y', 100 + 30).attr('x', 0).attr('height', 27).attr('width', 27).attr('xlink:href', 'assets/img/tyler1Profile.png')
+
+
+
+    let pokinumrects = svg.selectAll('.pokinumrect').data(pokinums).enter().append('rect')
+                .attr('height', 30)
+                .attr('width', function(d, i) {
+                    return totalWidth * pokinums[i]/100 - 1;
+                })
+                .attr('y', 100 + 30 + 30 + 15)
+                .attr('x', function(d, i) {
+                    prevWidths = 0
+                    for (let j=0; j < i; j++) {
+                        prevWidths += totalWidth * pokinums[j]/100
+                    }
+                    return 35 + prevWidths + i;
+                }).attr('fill', function(d, i) {
+                    return colors[i]
+                })
+    svg.append('text').attr('fill', 'white').attr('y', 100 + 15 + 30 + 30 + 15).attr('font-size', 15).attr('x', 35).text('26.7%')
+    svg.append('text').attr('fill', 'white').attr('y', 100 + 15 + 30 + 30 + 15).attr('font-size', 15).attr('x', 35 + totalWidth*(0.267) + 1).text('53.3%')
+    svg.append('text').attr('fill', 'white').attr('y', 100 + 15 + 30 + 30 + 15).attr('font-size', 15).attr('x', 35 + totalWidth*(0.267 + 0.533) + 2).text('20%')
+        
+    svg.append("svg:image").attr('y', 100 + 30 + 30 + 15).attr('x', 0).attr('height', 27).attr('width', 27).attr('xlink:href', 'assets/img/pokiProfile.png')
+
+    let t1sentrects = svg.selectAll('.t1sentrect').data(t1sents).enter().append('rect')
+        .attr('height', 30)
+        .attr('width', function(d, i) {
+            return totalWidth * t1sents[i]/(t1sents[0] + t1sents[1]) - 1;
+        })
+        .attr('y', 100 + 30 + 30 + 30 + 15 + 50)
+        .attr('x', function(d, i) {
+            prevWidths = 0
+            for (let j=0; j < i; j++) {
+                prevWidths += totalWidth * t1sents[j]/(t1sents[0] + t1sents[1])
+            }
+            return 35 + prevWidths + i;
+        }).attr('fill', function(d, i) {
+            return (i == 0) ? 'steelblue' : 'maroon'
+        })
+    svg.append('text').attr('fill', 'white').attr('y', 130 + 15 + 30 + 30 + 15 + 50).attr('font-size', 15).attr('x', 35).text('+2.24')
+    svg.append('text').attr('fill', 'white').attr('y', 130 + 15 + 30 + 30 + 15 + 50).attr('font-size', 15).attr('x', 35 + totalWidth*(2.24)/(2.24+8.73) + 1).text('-8.73')
+    svg.append("svg:image").attr('y', 130 + 15 + 30 + 30 + 50).attr('x', 0).attr('height', 27).attr('width', 27).attr('xlink:href', 'assets/img/tyler1Profile.png')
+
+
+    let pokisentrects = svg.selectAll('.pokisentrect').data(pokisents).enter().append('rect')
+        .attr('height', 30)
+        .attr('width', function(d, i) {
+            return totalWidth * pokisents[i]/(pokisents[0] + pokisents[1]) - 1;
+        })
+        .attr('y', 130 + 30 + 30 + 15 + 50 + 30 + 15)
+        .attr('x', function(d, i) {
+            prevWidths = 0
+            for (let j=0; j < i; j++) {
+                prevWidths += totalWidth * pokisents[j]/(pokisents[0] + pokisents[1])
+            }
+            return 35 + prevWidths + i;
+        }).attr('fill', function(d, i) {
+            return (i == 0) ? 'steelblue' : 'maroon'
+        })
+    svg.append('text').attr('fill', 'white').attr('y', 130 + 15 + 30 + 30 + 15 + 50 + 30 + 15).attr('font-size', 15).attr('x', 35).text('+5.06')
+    svg.append('text').attr('fill', 'white').attr('y', 130 + 15 + 30 + 30 + 15 + 50 + 30 + 15).attr('font-size', 15).attr('x', 35 + totalWidth*(5.06)/(5.06 + 2.07) + 1).text('-2.07')
+    svg.append("svg:image").attr('y', 130 + 15 + 30 + 30 + 15 + 50 + 30).attr('x', 0).attr('height', 27).attr('width', 27).attr('xlink:href', 'assets/img/pokiProfile.png')
+
+
+    let explainer = svg.append('text').attr('fill', 'black').attr('x', 15).attr('y', 120).attr('font-size', 15)
+    .attr('class', 'big_text').text('Tyler1 (top) vs Pokimane (bottom): proportions of pos/neu/neg messages')
+
+    let explainer2 = svg.append('text').attr('fill', 'black').attr('x', 15).attr('y', 120 + 20 + 30 + 30 + 15 + 30).attr('font-size', 15)
+    .attr('class', 'big_text').text('Tyler1 (top) vs Pokimane (bottom): Total sentiments expressed')
+
+
+}
+
+function drawfunction(index, sign){
+    // if index gets to 35 and the sign is negative (coming from the special section) back up
+    if (index == 65 && sign < 0) {
+        console.log("comin back up")
+        reset()
+        drawInitial()
+    } 
+
+    if (index == 66) {
+        console.log('got down to the big shift')
+        reset()
+        drawSpecial()
+        return;
+    }
+    // reset things
+    // redraw initial
+    // proceed onwards
+
+    // if index gets to 36 and the sign is positive (indicating just got here from above)
+    // reset things
+    // draw the special rectangles
+
 
     // if the index gets to a certain number, call changedataset (which redoes draw initial and clears everything) and set the index back down depending on the 
     if (index !== 30) {
@@ -226,9 +355,9 @@ function drawfunction(index){
                 return xPoses[i];
             }).attr('fill', function(d, i) {
                 if (barArray[0] == 0 && barArray[1] == 0 && barArray[2] == 0) {
-                    return 'lightgrey';
+                    return 'darkgrey';
                 } else {
-                    let colors = ['steelblue','lightgrey', 'maroon'];
+                    let colors = ['steelblue','darkgrey', 'maroon'];
                     
                     return colors[i]
                 }
@@ -281,11 +410,8 @@ scroll.on('active', function(index){
   let sign = (activeIndex - lastIndex) < 0 ? -1 : 1;
   let scrolledSections = d3.range(lastIndex + sign, activeIndex + sign, sign);
 
-  // if the current section is the last section:
-
   scrolledSections.forEach(i => {
-
-    drawfunction(i);
+    drawfunction(i, sign);
   })
   lastIndex = activeIndex;
 })
